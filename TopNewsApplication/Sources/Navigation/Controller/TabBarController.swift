@@ -1,6 +1,6 @@
 //
 //  TabBarController.swift
-//  TopNewsApp
+//  TopNewsApplication
 //
 //  Created by Oksana Dionisieva on 08.01.2025.
 //
