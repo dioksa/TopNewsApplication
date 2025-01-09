@@ -11,7 +11,7 @@ class Coordinator: CoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol]
     var type: CoordinatorType
     var navigationController: UINavigationController?
-    var finishActionDelegate: CoordinatorFinishActionDelegate?
+    weak var finishActionDelegate: CoordinatorFinishActionDelegate?
     
     init(childCoordinators: [CoordinatorProtocol] = [CoordinatorProtocol](),
          type: CoordinatorType,

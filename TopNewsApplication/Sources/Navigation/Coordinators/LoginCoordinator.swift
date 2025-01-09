@@ -19,4 +19,8 @@ final class LoginCoordinator: Coordinator {
     override func finish() {
         finishActionDelegate?.coordinatorDidFinish(self)
     }
+    
+    deinit {
+        print("LoginCoordinator deinit")
+    }
 }
