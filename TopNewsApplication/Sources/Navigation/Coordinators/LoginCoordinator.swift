@@ -12,7 +12,7 @@ final class LoginCoordinator: Coordinator {
 
     override func start() {
         guard let navigationController = navigationController else { return }
-        let loginScreen = factory.makeLoginScreen(coordinator: self)
+        let loginScreen = factory.makeLoginController(coordinator: self)
         navigationController.pushViewController(loginScreen, animated: true)
     }
     
@@ -21,6 +21,6 @@ final class LoginCoordinator: Coordinator {
     }
     
     deinit {
-        print("LoginCoordinator deinit")
+        print("Deinitialized \(String(describing: self))")
     }
 }

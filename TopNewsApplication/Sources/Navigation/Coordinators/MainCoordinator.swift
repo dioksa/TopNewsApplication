@@ -8,42 +8,26 @@
 import UIKit
 
 final class MainCoordinator: Coordinator {
+    private let factory = SceneFactory.self
+
     override func start() {
         showLoginScreen()
     }
     
+    // MARK: - Private part
     private func showLoginScreen() {
         guard let navigationController = navigationController else { return }
-        let loginCoordinator = LoginCoordinator(type: .login, navigationController: navigationController, finishActionDelegate: self)
+        let loginCoordinator = LoginCoordinator(type: .login,
+                                                navigationController: navigationController,
+                                                finishActionDelegate: self)
         addChild(loginCoordinator)
         loginCoordinator.start()
     }
     
-    private func loadTabBarItems() {
-        guard let navigationController else { return }
-
-        let homeNavigationVC = UINavigationController()
-        homeNavigationVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(resource: .homeIcon), tag: 0)
-        let homeCoordinator = HomeCoordinator(type: .home, navigationController: homeNavigationVC, finishActionDelegate: self)
-        homeCoordinator.start()
-        addChild(homeCoordinator)
-        
-        let favoritesNavigationVC = UINavigationController()
-        favoritesNavigationVC.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(resource: .favoriteIcon), tag: 1)
-        let favoritesCoordinator = FavoritesCoordinator(type: .favorites, navigationController: favoritesNavigationVC, finishActionDelegate: self)
-        favoritesCoordinator.start()
-        addChild(favoritesCoordinator)
-        
-        let profileNavigationVC = UINavigationController()
-        profileNavigationVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(resource: .profileIcon), tag: 2)
-        let profileCoordinator = ProfileCoordinator(type: .profile, navigationController: profileNavigationVC, finishActionDelegate: self)
-        profileCoordinator.start()
-        addChild(profileCoordinator)
-        
-        let tabBarControllers = [homeNavigationVC, favoritesNavigationVC, profileNavigationVC]
-        let tabBarController = TabBarController(tabBarControllers: tabBarControllers)
-        tabBarController.navigationItem.hidesBackButton = true
-        navigationController.pushViewController(tabBarController, animated: true)
+    private func showTabBarController() {
+        let tabBarController = factory.makeTabBarController(coordinator: self,
+                                                            finishActionDelegate: self)
+        navigationController?.pushViewController(tabBarController, animated: true)
     }
 }
 
@@ -54,7 +38,7 @@ extension MainCoordinator: CoordinatorFinishActionDelegate {
         
         switch coordinator.type {
             case .login:
-                loadTabBarItems()
+                showTabBarController()
                 navigationController?.viewControllers = [navigationController?.viewControllers.last ?? UIViewController()]
             default:
                 navigationController?.popToRootViewController(animated: true)

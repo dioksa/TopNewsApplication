@@ -24,16 +24,12 @@ class Coordinator: CoordinatorProtocol {
     }
     
     deinit {
-        print("🌷 Coordinator \(type) deinit")
+        print("Deinitialized \(String(describing: self))")
         childCoordinators.forEach { $0.finishActionDelegate = nil }
         childCoordinators.removeAll()
     }
     
-    func start() {
-        // Add action
-    }
+    func start() { }
     
-    func finish() {
-        // Add action
-    }
+    func finish() { }
 }
