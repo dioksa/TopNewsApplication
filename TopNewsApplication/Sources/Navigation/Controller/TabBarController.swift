@@ -25,5 +25,7 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         tabBar.backgroundColor = .gin
         tabBar.tintColor = .eucalyptus
+        
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.appFont(.medium, size: .h12)], for: .normal)
     }
 }
