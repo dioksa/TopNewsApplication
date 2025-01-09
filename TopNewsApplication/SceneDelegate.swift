@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         window.makeKeyAndVisible()
         
-        coordinator = MainCoordinator(type: .splash, navigationController: navigationVC)
+        coordinator = MainCoordinator(type: .login, navigationController: navigationVC)
         coordinator?.start()
     }
 

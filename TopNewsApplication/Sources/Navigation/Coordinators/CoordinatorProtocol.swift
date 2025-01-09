@@ -1,6 +1,6 @@
 //
 //  CoordinatorProtocol.swift
-//  TopNewsApp
+//  TopNewsApplication
 //
 //  Created by Oksana Dionisieva on 08.01.2025.
 //
@@ -8,7 +8,7 @@
 import UIKit
 
 enum CoordinatorType {
-    case splash, login, home, favorites, profile
+    case login, home, favorites, profile
 }
 
 protocol CoordinatorProtocol: AnyObject {

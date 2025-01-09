@@ -1,6 +1,6 @@
 //
 //  MainCoordinator.swift
-//  TopNewsApp
+//  TopNewsApplication
 //
 //  Created by Oksana Dionisieva on 08.01.2025.
 //
@@ -9,21 +9,17 @@ import UIKit
 
 final class MainCoordinator: Coordinator {
     override func start() {
-        showSplashScreen()
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-            self?.showTabBarItems()
-        }
+        showLoginScreen()
     }
     
-    private func showSplashScreen() {
+    private func showLoginScreen() {
         guard let navigationController = navigationController else { return }
-        let splashCoordinator = SplashCoordinator(type: .splash, navigationController: navigationController, finishActionDelegate: self)
-        addChild(splashCoordinator)
-        splashCoordinator.start()
+        let loginCoordinator = LoginCoordinator(type: .login, navigationController: navigationController, finishActionDelegate: self)
+        addChild(loginCoordinator)
+        loginCoordinator.start()
     }
     
-    private func showTabBarItems() {
+    private func loadTabBarItems() {
         guard let navigationController else { return }
 
         let homeNavigationVC = UINavigationController()
@@ -40,12 +36,13 @@ final class MainCoordinator: Coordinator {
         
         let profileNavigationVC = UINavigationController()
         profileNavigationVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(named: "profileIcon"), tag: 2)
-        let profileCoordinator = HomeCoordinator(type: .profile, navigationController: profileNavigationVC, finishActionDelegate: self)
+        let profileCoordinator = ProfileCoordinator(type: .profile, navigationController: profileNavigationVC, finishActionDelegate: self)
         profileCoordinator.start()
         addChild(profileCoordinator)
         
         let tabBarControllers = [homeNavigationVC, favoritesNavigationVC, profileNavigationVC]
         let tabBarController = TabBarController(tabBarControllers: tabBarControllers)
+        tabBarController.navigationItem.hidesBackButton = true
         navigationController.pushViewController(tabBarController, animated: true)
     }
 }
@@ -57,7 +54,8 @@ extension MainCoordinator: CoordinatorFinishActionDelegate {
         
         switch coordinator.type {
             case .login:
-                return
+                loadTabBarItems()
+                navigationController?.viewControllers = [navigationController?.viewControllers.last ?? UIViewController()]
             default:
                 navigationController?.popToRootViewController(animated: true)
         }
