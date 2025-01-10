@@ -17,6 +17,7 @@ final class HomeViewController: UIViewController, Instantiatable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        output?.viewIsReady()
         setupLabels()
         animateNewsImageView()
         setupBanner()
@@ -45,5 +46,13 @@ final class HomeViewController: UIViewController, Instantiatable {
         bannerVC.view.frame = containerView.bounds
         bannerVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         bannerVC.didMove(toParent: self)
+    }
+}
+
+// MARK: - LoginViewInput
+extension HomeViewController: LoginViewInput {
+    func configureText(title: String, address: String) {
+        appNameLabel.text = title
+        addressNameLabel.text = address
     }
 }
