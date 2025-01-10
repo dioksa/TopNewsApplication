@@ -2,9 +2,7 @@
 # platform :ios, '14.0'
 
 target 'TopNewsApplication' do
-  
-  pod 'R.swift'
-
+  # add pods here
 end
 
 # -----------------------
