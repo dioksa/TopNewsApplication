@@ -10,7 +10,7 @@ import UIKit
 final class BannerViewController: UIViewController {
     private enum Constants {
         static let bannerTimeInterval: TimeInterval = 3.0
-        static let bannerHeight: CGFloat = 150.0
+        static let bannerHeight: CGFloat = 180.0
         static let bannerCornerRadius: CGFloat = 16.0
         static let shadowOpacity: Float = 0.3
         static let shadowOffsetHeight = 10.0
@@ -40,6 +40,7 @@ final class BannerViewController: UIViewController {
         timer?.invalidate()
     }
 
+    // MARK: - Private part
     private func setupPageViewController() {
         pageViewController = UIPageViewController(transitionStyle: .scroll,
                                                   navigationOrientation: .horizontal,
@@ -47,11 +48,10 @@ final class BannerViewController: UIViewController {
         pageViewController.dataSource = self
         pageViewController.delegate = self
 
-        // TODO: - Add some pictures
         banners = [
-            createBanner(withColor: .red),
-            createBanner(withColor: .green),
-            createBanner(withColor: .blue)
+            createBanner(image: UIImage(resource: .banner1)),
+            createBanner(image: UIImage(resource: .banner2)),
+            createBanner(image: UIImage(resource: .banner3))
         ]
 
         pageViewController.setViewControllers([banners.first!], direction: .forward, animated: true, completion: nil)
@@ -81,8 +81,8 @@ final class BannerViewController: UIViewController {
         pageControl = UIPageControl()
         pageControl.numberOfPages = banners.count
         pageControl.currentPage = 0
-        pageControl.currentPageIndicatorTintColor = .black
-        pageControl.pageIndicatorTintColor = .lightGray
+        pageControl.currentPageIndicatorTintColor = .eucalyptus
+        pageControl.pageIndicatorTintColor = .gin
 
         view.addSubview(pageControl)
         pageControl.translatesAutoresizingMaskIntoConstraints = false
@@ -93,9 +93,21 @@ final class BannerViewController: UIViewController {
         ])
     }
 
-    private func createBanner(withColor color: UIColor) -> UIViewController {
+    private func createBanner(image: UIImage?) -> UIViewController {
         let banner = UIViewController()
-        banner.view.backgroundColor = color
+        
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        banner.view.addSubview(imageView)
+        
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: banner.view.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: banner.view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: banner.view.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: banner.view.bottomAnchor)
+        ])
+        
         return banner
     }
 

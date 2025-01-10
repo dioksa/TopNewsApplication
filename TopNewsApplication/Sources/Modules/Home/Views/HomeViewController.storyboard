@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3g-Ye-fUX">
-                                <rect key="frame" x="24" y="99" width="345" height="128"/>
+                                <rect key="frame" x="24" y="83" width="345" height="180"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="y3g-Ye-fUX" secondAttribute="height" multiplier="345:128" id="FX2-kp-jDo"/>
+                                    <constraint firstAttribute="height" constant="180" id="5kb-Za-Ggi"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -29,7 +29,7 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y3g-Ye-fUX" secondAttribute="trailing" constant="24" id="LJx-kJ-Pyn"/>
                             <constraint firstItem="y3g-Ye-fUX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="fMe-mK-OsS"/>
-                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="40" id="w6W-f4-Ohz"/>
+                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="w6W-f4-Ohz"/>
                         </constraints>
                     </view>
                     <connections>
