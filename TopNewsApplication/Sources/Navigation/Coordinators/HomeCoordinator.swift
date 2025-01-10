@@ -13,8 +13,4 @@ final class HomeCoordinator: Coordinator {
         let homeScreen = factory.makeHomeController(coordinator: self)
         navigationController.pushViewController(homeScreen, animated: true)
     }
-        
-    deinit {
-        print("Deinitialized \(String(describing: self))")
-    }
 }

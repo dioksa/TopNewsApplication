@@ -20,10 +20,11 @@ struct SceneFactory {
     // MARK: - Controllers
     static func makeTabBarController(coordinator: MainCoordinator,
                                      finishActionDelegate: CoordinatorFinishActionDelegate) -> TabBarController {
-
         let homeNavigationVC = UINavigationController()
         homeNavigationVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(resource: .homeIcon), tag: 0)
-        let homeCoordinator = HomeCoordinator(type: .home, navigationController: homeNavigationVC, finishActionDelegate: finishActionDelegate)
+        let homeCoordinator = HomeCoordinator(type: .home,
+                                              navigationController: homeNavigationVC,
+                                              finishActionDelegate: finishActionDelegate)
         homeCoordinator.start()
         coordinator.addChild(homeCoordinator)
         
@@ -57,7 +58,8 @@ struct SceneFactory {
     static func makeHomeController(coordinator: HomeCoordinator) -> HomeViewController {
         let presenter = HomeViewPresenter(coordinator: coordinator)
         let homeViewController = UIStoryboard(name: "HomeViewController", bundle: nil).instantiate() as HomeViewController
-        
+        homeViewController.output = presenter
+
         return homeViewController
     }
 

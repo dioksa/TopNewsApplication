@@ -17,10 +17,9 @@ final class MainCoordinator: Coordinator {
     // MARK: - Private part
     private func showLoginScreen() {
         guard let navigationController = navigationController else { return }
-        let loginCoordinator = LoginCoordinator(type: .login,
-                                                navigationController: navigationController,
-                                                finishActionDelegate: self)
-        addChild(loginCoordinator)
+        let loginCoordinator = factory.makeLoginCoordinator(coordinator: self,
+                                                            finishActionDelegate: self,
+                                                            navigationController: navigationController)
         loginCoordinator.start()
     }
     

@@ -8,12 +8,22 @@
 import UIKit
 
 final class HomeViewController: UIViewController, Instantiatable {
+    @IBOutlet private var containerView: UIView!
+    
+    var output: HomeViewControllerOutput?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        setupBanner()
     }
-    
-    deinit {
-        print("Deinitialized \(String(describing: self))")
+
+    private func setupBanner() {
+        let bannerVC = BannerViewController()
+        addChild(bannerVC)
+        containerView.addSubview(bannerVC.view)
+        
+        bannerVC.view.frame = containerView.bounds
+        bannerVC.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        bannerVC.didMove(toParent: self)
     }
 }

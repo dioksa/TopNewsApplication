@@ -24,7 +24,6 @@ class Coordinator: CoordinatorProtocol {
     }
     
     deinit {
-        print("Deinitialized \(String(describing: self))")
         childCoordinators.forEach { $0.finishActionDelegate = nil }
         childCoordinators.removeAll()
     }
