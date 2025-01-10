@@ -11,6 +11,7 @@ final class HomeCoordinator: Coordinator {
     override func start() {
         guard let navigationController = navigationController else { return }
         let homeScreen = factory.makeHomeController(coordinator: self)
+        navigationController.isNavigationBarHidden = true
         navigationController.pushViewController(homeScreen, animated: true)
     }
 }
