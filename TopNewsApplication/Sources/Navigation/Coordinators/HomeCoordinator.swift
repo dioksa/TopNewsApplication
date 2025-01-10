@@ -6,10 +6,11 @@
 //
 
 final class HomeCoordinator: Coordinator {
+    private let factory = SceneFactory.self
 
     override func start() {
-        let splashViewController = LoginViewController()
-        splashViewController.view.backgroundColor = .green
-        navigationController?.pushViewController(splashViewController, animated: true)
+        guard let navigationController = navigationController else { return }
+        let homeScreen = factory.makeHomeController(coordinator: self)
+        navigationController.pushViewController(homeScreen, animated: true)
     }
 }
