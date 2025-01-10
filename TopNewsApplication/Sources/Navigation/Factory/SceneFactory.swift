@@ -56,8 +56,8 @@ struct SceneFactory {
     }
     
     static func makeHomeController(coordinator: HomeCoordinator) -> HomeViewController {
-        let presenter = HomeViewPresenter(coordinator: coordinator)
         let homeViewController = UIStoryboard(name: "HomeViewController", bundle: nil).instantiate() as HomeViewController
+        let presenter = HomeViewPresenter(coordinator: coordinator, view: homeViewController)
         homeViewController.output = presenter
 
         return homeViewController

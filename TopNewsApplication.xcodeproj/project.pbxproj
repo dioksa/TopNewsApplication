@@ -18,7 +18,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		1E069A4E2D2F248B005D6DC1 /* Exceptions for "TopNewsApplication" folder in "TopNewsApplication" target */ = {
+		1E37BD602D31883F00AC6C21 /* Exceptions for "TopNewsApplication" folder in "TopNewsApplication" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -31,7 +31,7 @@
 		1E069A3E2D2F2489005D6DC1 /* TopNewsApplication */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				1E069A4E2D2F248B005D6DC1 /* Exceptions for "TopNewsApplication" folder in "TopNewsApplication" target */,
+				1E37BD602D31883F00AC6C21 /* Exceptions for "TopNewsApplication" folder in "TopNewsApplication" target */,
 			);
 			path = TopNewsApplication;
 			sourceTree = "<group>";
@@ -130,6 +130,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = 1E069A332D2F2489005D6DC1;
 			minimizedProjectReferenceProxies = 1;
@@ -306,6 +307,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -362,6 +364,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

@@ -1,5 +1,5 @@
 //
-//  Contracts.swift
+//  LoginContracts.swift
 //  TopNewsApplication
 //
 //  Created by Oksana Dionisieva on 09.01.2025.
