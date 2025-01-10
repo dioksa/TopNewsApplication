@@ -43,7 +43,7 @@ struct SceneFactory {
         let tabBarControllers = [homeNavigationVC, favoritesNavigationVC, profileNavigationVC]
         let tabBarController = TabBarController(tabBarControllers: tabBarControllers)
         tabBarController.navigationItem.hidesBackButton = true
-        
+
         return tabBarController
     }
 
@@ -62,5 +62,4 @@ struct SceneFactory {
 
         return homeViewController
     }
-
 }

@@ -17,31 +17,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3g-Ye-fUX">
-                                <rect key="frame" x="24" y="83" width="345" height="180"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="24" y="131.66666666666666" width="345" height="179.99999999999997"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="5kb-Za-Ggi"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appstore" translatesAutoresizingMaskIntoConstraints="NO" id="QjN-RG-QPM">
+                                <rect key="frame" x="321" y="-428.66666666666669" width="48" height="1024"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="85V-Nv-CRg"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vmF-l6-uoC">
+                                <rect key="frame" x="24" y="59" width="164.66666666666666" height="48.666666666666657"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top News Application" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rh5-QZ-bns">
+                                        <rect key="frame" x="0.0" y="0.0" width="164.66666666666666" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kyiv, Ukraine, 04211" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogP-so-HoS">
+                                        <rect key="frame" x="0.0" y="28.333333333333329" width="164.66666666666666" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <viewLayoutGuide key="safeArea" id="P6y-2t-vrj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="y3g-Ye-fUX" secondAttribute="trailing" constant="24" id="LJx-kJ-Pyn"/>
-                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="fMe-mK-OsS"/>
-                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="24" id="w6W-f4-Ohz"/>
+                            <constraint firstItem="QjN-RG-QPM" firstAttribute="centerY" secondItem="vmF-l6-uoC" secondAttribute="centerY" id="0l9-XS-g9H"/>
+                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="top" secondItem="vmF-l6-uoC" secondAttribute="bottom" constant="24" id="2Dm-g8-RPu"/>
+                            <constraint firstAttribute="trailing" secondItem="y3g-Ye-fUX" secondAttribute="trailing" constant="24" id="LJx-kJ-Pyn"/>
+                            <constraint firstItem="QjN-RG-QPM" firstAttribute="trailing" secondItem="y3g-Ye-fUX" secondAttribute="trailing" id="Rmh-N0-Qs0"/>
+                            <constraint firstItem="vmF-l6-uoC" firstAttribute="leading" secondItem="y3g-Ye-fUX" secondAttribute="leading" id="SLH-ZB-V6x"/>
+                            <constraint firstItem="y3g-Ye-fUX" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="24" id="fMe-mK-OsS"/>
+                            <constraint firstItem="vmF-l6-uoC" firstAttribute="top" secondItem="P6y-2t-vrj" secondAttribute="top" id="jgr-VD-DtU"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="393" height="852"/>
                     <connections>
+                        <outlet property="addressNameLabel" destination="ogP-so-HoS" id="xIh-Cm-8lJ"/>
+                        <outlet property="appNameLabel" destination="Rh5-QZ-bns" id="mQ8-95-G9Y"/>
                         <outlet property="containerView" destination="y3g-Ye-fUX" id="jW8-f9-rj9"/>
+                        <outlet property="newsLogoImageView" destination="QjN-RG-QPM" id="jiI-4K-onP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="45" y="4"/>
+            <point key="canvasLocation" x="43.511450381679388" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
+        <image name="appstore" width="1024" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
