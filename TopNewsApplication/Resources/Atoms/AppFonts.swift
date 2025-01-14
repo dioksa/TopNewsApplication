@@ -41,7 +41,9 @@ enum Font {
     enum Size: CGFloat {
         case h10 = 10.0
         case h12 = 12.0
+        case h14 = 14.0
         case h16 = 16.0
+        case h20 = 20.0
     }
 
     enum Name: String {

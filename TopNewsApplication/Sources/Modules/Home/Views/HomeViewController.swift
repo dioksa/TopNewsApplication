@@ -17,15 +17,15 @@ final class HomeViewController: UIViewController, Instantiatable {
         static let bannerAnimationDuration = 1.5
         static let numberOfRowsInCollection: CGFloat = 2
     }
-
+    
     @IBOutlet private var containerView: UIView!
     @IBOutlet private var appNameLabel: UILabel!
     @IBOutlet private var addressNameLabel: UILabel!
     @IBOutlet private var newsLogoImageView: UIImageView!
     @IBOutlet private var collectionView: UICollectionView!
-
+    
     var output: HomeViewControllerOutput?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         output?.viewIsReady()
@@ -34,7 +34,7 @@ final class HomeViewController: UIViewController, Instantiatable {
         setupBanner()
         registerCells()
     }
-        
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let lastItem = collectionView.numberOfItems(inSection: 0) - 1
@@ -46,7 +46,7 @@ final class HomeViewController: UIViewController, Instantiatable {
             self.collectionView.scrollToItem(at: firstIndexPath, at: .left, animated: true)
         }
     }
-        
+    
     // MARK: - Private part
     private func setupLabels() {
         appNameLabel.font = .appFont(.bold, size: .h16)
@@ -62,12 +62,12 @@ final class HomeViewController: UIViewController, Instantiatable {
         UIView.animate(withDuration: Constants.bannerAnimationDuration,
                        delay: 0,
                        options: [.autoreverse, .repeat],
-                       animations: { [weak self] in
-            self?.newsLogoImageView.transform = CGAffineTransform(scaleX: Constants.logoScaleValue,
+                       animations: {
+            self.newsLogoImageView.transform = CGAffineTransform(scaleX: Constants.logoScaleValue,
                                                                  y: Constants.logoScaleValue)
-                       }, completion: nil)
+        }, completion: nil)
     }
-
+    
     private func setupBanner() {
         let bannerVC = BannerViewController()
         addChild(bannerVC)
@@ -93,14 +93,14 @@ extension HomeViewController: UICollectionViewDataSource {
         // Temporary data
         return 20
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.newsCellIdentifier, for: indexPath) as? NewsCollectionViewCell else {
             return UICollectionViewCell()
         }
-
+        
         cell.setup()
-
+        
         return cell
     }
 }
@@ -110,14 +110,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: calculateWidth(), height: calculateHeight())
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: Constants.collectionItemSpacing,
                             left: Constants.collectionItemSpacing,
                             bottom: Constants.collectionItemSpacing,
                             right: Constants.collectionItemSpacing)
     }
-
+    
     private func calculateWidth() -> CGFloat {
         (collectionView.frame.width) / Constants.numberOfRowsInCollection
     }
@@ -126,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         let offsets: CGFloat = Constants.collectionItemSpacing * 3
         return (collectionView.frame.height - offsets) / Constants.numberOfRowsInCollection
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return Constants.minimumLineSpacing
     }
