@@ -48,8 +48,8 @@ struct SceneFactory {
     }
 
     static func makeLoginController(coordinator: LoginCoordinator) -> LoginViewController {
-        let presenter = LoginViewPresenter(coordinator: coordinator)
         let loginViewController = UIStoryboard(name: "LoginViewController", bundle: nil).instantiate() as LoginViewController
+        let presenter = LoginViewPresenter(coordinator: coordinator, view: loginViewController)
         loginViewController.output = presenter
         
         return loginViewController

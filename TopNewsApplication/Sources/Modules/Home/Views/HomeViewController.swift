@@ -24,7 +24,7 @@ final class HomeViewController: UIViewController, Instantiatable {
     @IBOutlet private var newsLogoImageView: UIImageView!
     @IBOutlet private var collectionView: UICollectionView!
     
-    var output: HomeViewControllerOutput?
+    var output: HomeViewOutput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +79,8 @@ final class HomeViewController: UIViewController, Instantiatable {
     }
 }
 
-// MARK: - LoginViewInput
-extension HomeViewController: LoginViewInput {
+// MARK: - HomeViewInput
+extension HomeViewController: HomeViewInput {
     func configureText(title: String, address: String) {
         appNameLabel.text = title
         addressNameLabel.text = address

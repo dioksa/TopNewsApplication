@@ -5,6 +5,11 @@
 //  Created by Oksana Dionisieva on 09.01.2025.
 //
 
-protocol LoginViewControllerOutput: AnyObject {
+protocol LoginViewOutput: AnyObject {
     func loginFinish()
+}
+
+protocol LoginViewInput: AnyObject {
+    func startAnimating()
+    func stopAnimating()
 }

@@ -7,16 +7,16 @@
 
 final class HomeViewPresenter {
     private weak var coordinator: HomeCoordinator?
-    private weak var view: LoginViewInput?
+    private weak var view: HomeViewInput?
     
-    init(coordinator: HomeCoordinator?, view: LoginViewInput?) {
+    init(coordinator: HomeCoordinator?, view: HomeViewInput?) {
         self.coordinator = coordinator
         self.view = view
     }
 }
 
 // MARK: - HomeViewControllerOutput
-extension HomeViewPresenter: HomeViewControllerOutput {
+extension HomeViewPresenter: HomeViewOutput {
     func viewIsReady() {
         view?.configureText(title: .Home.Header.title,
                             address: .Home.Header.address)

@@ -14,16 +14,19 @@ final class LoginViewController: UIViewController, Instantiatable {
     @IBOutlet private var passwordTitleLabel: UILabel!
     @IBOutlet private var emailTextField: UITextField!
     @IBOutlet private var passwordTextField: UITextField!
-    
-    var output: LoginViewControllerOutput?
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+
+    var output: LoginViewOutput?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginButton.isAnimated = true
+        activityIndicator.hidesWhenStopped = true
+
+        configureLoginButton()
         setupLabels()
+
         configureTextField(with: "Please enter your email", for: emailTextField)
         configureTextField(with: "Please enter your password", for: passwordTextField)
-        loginButton.setTitle("Sign in", for: .normal)
     }
     
     private func configureTextField(with text: String, for textField: UITextField) {
@@ -44,11 +47,28 @@ final class LoginViewController: UIViewController, Instantiatable {
         passwordTitleLabel.font = .appFont(.medium, size: .h14)
     }
     
+    private func configureLoginButton() {
+        loginButton.isAnimated = true
+        loginButton.setTitle("Sign in", for: .normal)
+    }
+    
     deinit {
         print("Deinitialized \(String(describing: self))")
     }
     
     @IBAction private func loginButtonDidTap(_ sender: ActionButton) {
         output?.loginFinish()
+    }
+}
+
+// MARK: - LoginViewInput
+extension LoginViewController: LoginViewInput {
+    func startAnimating() {
+        activityIndicator.startAnimating()
+    }
+    
+    func stopAnimating() {
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
     }
 }
