@@ -70,6 +70,9 @@
                                     <action selector="loginButtonDidTap:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="U6s-RC-sXb"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="kdS-Ka-xzJ">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,10 +84,12 @@
                             <constraint firstItem="JuJ-Rs-AhN" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Bvm-th-yeD"/>
                             <constraint firstItem="KXo-ax-Oww" firstAttribute="top" secondItem="b4a-3D-tpU" secondAttribute="bottom" constant="48" id="KuW-1C-1Ui"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="b4a-3D-tpU" secondAttribute="trailing" constant="24" id="Rn5-hS-fuR"/>
+                            <constraint firstItem="kdS-Ka-xzJ" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ub8-Cm-uyt"/>
                             <constraint firstItem="Lxc-jB-FFx" firstAttribute="leading" secondItem="b4a-3D-tpU" secondAttribute="leading" id="V8b-kM-BP7"/>
                             <constraint firstItem="zSv-b9-iMg" firstAttribute="leading" secondItem="KXo-ax-Oww" secondAttribute="leading" id="abz-Fp-8dw"/>
                             <constraint firstItem="eG9-Ht-B6E" firstAttribute="top" secondItem="JuJ-Rs-AhN" secondAttribute="bottom" constant="40" id="bya-2D-fdD"/>
                             <constraint firstItem="JuJ-Rs-AhN" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="80" id="fzH-ZH-Rb9"/>
+                            <constraint firstItem="kdS-Ka-xzJ" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="lMv-AW-CXc"/>
                             <constraint firstItem="KXo-ax-Oww" firstAttribute="top" secondItem="zSv-b9-iMg" secondAttribute="bottom" constant="8" id="pU9-GG-DfJ"/>
                             <constraint firstItem="KXo-ax-Oww" firstAttribute="leading" secondItem="b4a-3D-tpU" secondAttribute="leading" id="qD8-vY-61k"/>
                             <constraint firstItem="b4a-3D-tpU" firstAttribute="top" secondItem="Lxc-jB-FFx" secondAttribute="bottom" constant="8" id="sq1-xE-6s7"/>
@@ -93,6 +98,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="kdS-Ka-xzJ" id="37O-5l-3zy"/>
                         <outlet property="emailTextField" destination="b4a-3D-tpU" id="uwE-FP-yH4"/>
                         <outlet property="emailTitleLabel" destination="Lxc-jB-FFx" id="WNN-gL-1B5"/>
                         <outlet property="loginButton" destination="vcH-4r-Sqm" id="EXE-rU-PYh"/>

@@ -5,10 +5,10 @@
 //  Created by Oksana Dionisieva on 10.01.2025.
 //
 
-protocol HomeViewControllerOutput: AnyObject {
+protocol HomeViewOutput: AnyObject {
     func viewIsReady()
 }
 
-protocol LoginViewInput: AnyObject {
+protocol HomeViewInput: AnyObject {
     func configureText(title: String, address: String)
 }
