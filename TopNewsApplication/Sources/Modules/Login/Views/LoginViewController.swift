@@ -22,13 +22,17 @@ final class LoginViewController: UIViewController, Instantiatable {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
 
+        hideKeyboardTappingAround()
+        addedKeyboardObservers()
+
         configureLoginButton()
         setupLabels()
 
         configureTextField(with: "Please enter your email", for: emailTextField)
         configureTextField(with: "Please enter your password", for: passwordTextField)
+        
     }
-    
+
     private func configureTextField(with text: String, for textField: UITextField) {
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8.0, height: textField.frame.height))
         textField.leftViewMode = .always
@@ -53,6 +57,7 @@ final class LoginViewController: UIViewController, Instantiatable {
     }
     
     deinit {
+        NotificationCenter.default.removeObserver(self)
         print("Deinitialized \(String(describing: self))")
     }
     
@@ -70,5 +75,44 @@ extension LoginViewController: LoginViewInput {
     func stopAnimating() {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.stopAnimating()
+    }
+}
+
+// MARK: - Keyboard observers
+private extension LoginViewController {
+    func addedKeyboardObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func keyboardWillShow(_ notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? CGRect.zero
+        let keyboardHeight = keyboardFrame.height
+
+        if UIScreen.isSmallScreen {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.view.frame.origin.y = -keyboardHeight
+            }
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        if UIScreen.isSmallScreen {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                self?.view.frame.origin.y = 0
+            }
+        }
     }
 }
